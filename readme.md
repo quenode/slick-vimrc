@@ -14,6 +14,8 @@
 
 Slick .vimrc 0.2 is a minimal, portable, and server-friendly Vim configuration designed for those who want:
 
+Inspired by "How to Do 90% of What Plugins Do (With Just Vim)" https://www.youtube.com/watch?v=XA2WjJbmmoM
+
 A simple, fast, and compatible setup.
 
 A single .vimrc that just works on any environment — from minimal Linux servers to Neovim.
