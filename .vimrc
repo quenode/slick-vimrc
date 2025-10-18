@@ -1,14 +1,28 @@
 " enter the current millenium
 "
-
 set nocompatible
 
-" Set your colorscheme
+" Set yourcolorscheme koehler
 colorscheme koehler
-
 " enable syntax and plugins (for netrw)
 syntax enable
 filetype plugin on
+
+" Encoding
+set encoding=utf-8
+
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+
+
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
 
 " Display all matching files when we tab complete
 set wildmenu
