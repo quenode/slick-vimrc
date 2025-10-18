@@ -77,7 +77,7 @@ ino <CR> <C-r>=pumvisible()?"\<lt>C-y>":""<CR><CR>
 ino <Tab> <C-r>=pumvisible()?"\<lt>C-n>":"\<lt>Tab>"<CR>
 ino <S-Tab> <C-r>=pumvisible()?"\<lt>C-p>":"\<lt>S-Tab>"<CR>
 
-augroup MyAutoComplete
+augroup MinimalAutoComplete
     au!
     au InsertCharPre * if
     \ !pumvisible() &&
@@ -99,12 +99,7 @@ ino <C-f> <C-x><C-f>
      if &ft != 'yaml' && &ft != 'yaml.ansible'
          return
      endif
- 
-     " Clear problematic syntax groups that cause slow highlighting
-"     syntax clear yamlBlockMappingKey
-"     syntax clear yamlFlowString
-"     syntax clear yamlString
-     
+
      " Better single quoted strings with proper continuation
      syntax region yamlSingleQuotedString
            \ matchgroup=yamlStringDelimiter
@@ -114,7 +109,7 @@ ino <C-f> <C-x><C-f>
            \ contains=yamlSingleEscape,@Spell
            \ containedin=ALLBUT,yamlComment
            \ keepend
- 
+
      " Better double quoted strings
      syntax region yamlDoubleQuotedString
            \ matchgroup=yamlStringDelimiter
@@ -124,7 +119,7 @@ ino <C-f> <C-x><C-f>
            \ contains=yamlEscape,@Spell
            \ containedin=ALLBUT,yamlComment
            \ keepend
- 
+
      " Ansible-specific syntax enhancements
      syntax keyword yamlAnsibleKeyword 
            \ hosts vars tasks handlers roles 
@@ -132,7 +127,7 @@ ino <C-f> <C-x><C-f>
            \ gather_facts connection module_defaults
            \ next to include_tasks include_role
            \ containedin=yamlBlockMappingKey
- 
+
      " Jinja2 template support within YAML
      syntax region yamlJinja2
            \ matchgroup=yamlJinja2Delimiter
@@ -140,7 +135,7 @@ ino <C-f> <C-x><C-f>
            \ end=/}}}\?/
            \ contains=@yamlJinja2Inner
            \ containedin=ALLBUT,yamlComment,yamlString
- 
+
      " Fixed: Added proper delimiters for Jinja2 comments
      syntax region yamlJinja2Comment
            \ matchgroup=yamlJinja2CommentDelimiter
@@ -152,17 +147,17 @@ ino <C-f> <C-x><C-f>
      syntax match yamlBlockMappingKey /^\s*\zs\w\+\(\s*:\s*\|\s*:\s*$\)/
            \ containedin=ALL
            \ nextgroup=yamlFlowString,yamlString,yamlNumber,yamlBool
- 
+
      " Performance optimizations
      setlocal synmaxcol=300
      setlocal re=1
-     
+
      " Better indentation for Ansible
      setlocal shiftwidth=2
      setlocal softtabstop=2
      setlocal tabstop=2
      setlocal expandtab
-     
+
      " Highlight groups
      highlight default link yamlAnsibleKeyword Statement
      highlight default link yamlJinja2 PreProc
@@ -170,14 +165,14 @@ ino <C-f> <C-x><C-f>
      highlight default link yamlJinja2Comment Comment
      highlight default link yamlJinja2CommentDelimiter Comment
  endfunction
- 
+
  " Auto-commands to apply the fix
  augroup AnsibleYAMLFix
      autocmd!
      autocmd FileType yaml call FixAnsibleYAML()
      autocmd BufRead,BufNewFile *.yml,*.yaml set filetype=yaml
  augroup END
- 
+
  " Manual trigger if needed
  command! FixYAML call FixAnsibleYAML()
 
