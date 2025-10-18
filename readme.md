@@ -21,8 +21,9 @@ A single .vimrc that just works on any environment — from minimal Linux server
 Sensible defaults, essential productivity tools, and zero plugin dependency.
 
 You can easily install it with one command:
-
-curl -fsSL https://example.com/slick.vimrc -o ~/.vimrc
+```
+curl -fsSL https://raw.githubusercontent.com/quenode/slick-vimrc/refs/heads/main/.vimrc -o ~/.vimrc
+```
 
 ⚙️ Features:
 🧩 Core Enhancements
@@ -76,15 +77,17 @@ BSD License — Free to use, modify, and distribute.
 No restrictions. Just credit when possible.
 
 📦 Installation
-curl -fsSL https://example.com/slick.vimrc -o ~/.vimrc
+```
+curl -fsSL https://raw.githubusercontent.com/quenode/slick-vimrc/refs/heads/main/.vimrc -o ~/.vimrc
 vim
+```
 
 
 Or for Neovim:
-
-curl -fsSL https://example.com/slick.vimrc -o ~/.config/nvim/init.vim
+```
+curl -fsSL https://raw.githubusercontent.com/quenode/slick-vimrc/refs/heads/main/.vimrc -o ~/.config/nvim/init.vim
 nvim
-
+```
 🤝 Contributing
 
 Got a better idea for speed or simplicity?
